@@ -1,34 +1,33 @@
 package com.projeto.riea.model;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class Database {
-    private static ArrayList<ALuno> alunos;
+    private static ArrayList<Info> informações;
 
     public Database() {
-        alunos = new ArrayList<>();
+        informações = new ArrayList<>();
     }
 
     public static void init(){
-        alunos = new ArrayList<Aluno>();
-        alunos.add(new Aluno("1", "Jose", "jose@gmail.com", "40320922", "aluno"));
+        informações = new ArrayList<Info>();
+        informações.add(new Info("11", "O que é autismo?", "o autismo é um transtorno..."));
     }
     
-    public static void criar(Aluno novo){
-        alunos.add(novo);
+    public static void criar(Info novo){
+        informações.add(novo);
     }
 
-    public static ArrayList<Aluno> listaAluno(){
-        return alunos;
+    public static ArrayList<Info> listaInfo(){
+        return informações;
     }
 
-    public static void removerAluno(Aluno novo) {
-        alunos.add(novo);
+    public static void removerInfo(Info novo) {
+        informações.add(novo);
     }
 
-    public static List<Aluno> all(){
-        return alunos;
+    public static List<Info> all(){
+        return informações;
     }
 }

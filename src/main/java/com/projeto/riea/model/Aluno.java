@@ -1,9 +1,16 @@
 package com.projeto.riea.model;
 
 import java.util.ArrayList;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+@Entity
 public class Aluno{
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nome;
     private String email;
     private String telefone;
@@ -12,19 +19,18 @@ public class Aluno{
     public Aluno() {
     }
 
-    public Aluno(String id, String nome, String email, String telefone, String tipo) {
-        this.id = id;
+    public Aluno(String nome, String email, String telefone, String tipo) {
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
         this.tipo = tipo;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

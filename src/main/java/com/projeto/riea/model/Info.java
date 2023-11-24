@@ -1,24 +1,31 @@
 package com.projeto.riea.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Info{
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String tema;
     private String conteudo;
 
     public Info() {
     }
 
-    public Info(String id, String tema, String conteudo) {
-        this.id = id;
+    public Info(String tema, String conteudo) {
         this.tema = tema;
         this.conteudo = conteudo;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

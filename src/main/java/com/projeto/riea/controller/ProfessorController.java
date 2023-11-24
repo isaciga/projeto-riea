@@ -8,13 +8,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.projeto.riea.model.Database;
 import com.projeto.riea.model.Professor;
 
 @RestController
 public class ProfessorController {
 
-    @DeleteMapping(path = "/professor/deletar")
+    @DeleteMapping("/professor/deletar")
     public void deletar(Professor novo){
         Database.removerProfessor(novo);
     }

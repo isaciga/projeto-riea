@@ -1,7 +1,15 @@
 package com.projeto.riea.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Conteudo{
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nome;
     private String materia;
     private String tipo;
@@ -9,18 +17,17 @@ public class Conteudo{
     public Conteudo() {
     }
 
-    public Conteudo(String id, String nome, String materia, String tipo) {
-        this.id = id;
+    public Conteudo(String nome, String materia, String tipo) {
         this.nome = nome;
         this.materia = materia;
         this.tipo = tipo;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

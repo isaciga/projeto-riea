@@ -22,18 +22,18 @@ public class AlunoController {
     AlunoRepository alunoRepository;
 
     @DeleteMapping("/cadastro/deletar/{id}")
-    public void deletar(@PathVariable "id" Long id){
+    public void deletar(@PathVariable("id") Long id){
         alunoRepository.deleteById(id);
     }
 
     @GetMapping("/cadastro/listar")
     public List<Aluno> listar(){
-        return alunoRepository.findAll();
+        return (List<Aluno>) alunoRepository.findAll();
     }
 
     @PostMapping("/cadastro")
-    public void criar(@RequestBody Aluno novo){
-        
+    public Aluno criar(@RequestBody Aluno novo){
+        return alunoRepository.save(novo);
     }
 }
 

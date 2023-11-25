@@ -1,6 +1,5 @@
 package com.projeto.riea.model;
 
-import java.util.ArrayList;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,15 +14,19 @@ public class Aluno{
     private String email;
     private String telefone;
     private String tipo;
+    private String username;
+    private String password;
 
     public Aluno() {
     }
 
-    public Aluno(String nome, String email, String telefone, String tipo) {
+    public Aluno(String nome, String email, String telefone, String tipo, String username, String password) {
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
         this.tipo = tipo;
+        this.username = username;
+        this.password = password;
     }
 
     public Long getId() {
@@ -65,4 +68,22 @@ public class Aluno{
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    
 }

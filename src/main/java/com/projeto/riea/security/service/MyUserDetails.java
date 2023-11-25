@@ -1,17 +1,17 @@
-package edu.ifsp.ltp.exemplo_springsecurity.security.service;
+package com.projeto.riea.security.service;
 
 import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import edu.ifsp.ltp.exemplo_springsecurity.model.Usuario;
+import com.projeto.riea.model.Aluno;
 
 public class MyUserDetails implements UserDetails{
-    private Usuario usuarioDoSitema;
+    private Aluno alunoDoSistema;
 
-    public MyUserDetails(Usuario usuario){
-        this.usuarioDoSitema = usuario;
+    public MyUserDetails(Aluno aluno){
+        this.alunoDoSistema = aluno;
     }
     @Override
     // Ignorar este método
@@ -21,14 +21,12 @@ public class MyUserDetails implements UserDetails{
 
     @Override
     public String getPassword() {
-        return this.usuarioDoSitema.getPassword();
+        return this.alunoDoSistema.getPassword();
     }
-
     @Override
     public String getUsername() {
-        return this.usuarioDoSitema.getUsername();
+        return this.alunoDoSistema.getUsername();
     }
-
     @Override
     // Ignorar este método
     public boolean isAccountNonExpired() {
@@ -52,4 +50,5 @@ public class MyUserDetails implements UserDetails{
     public boolean isEnabled() {
         return true;
     }
+
 }

@@ -1,6 +1,5 @@
 package com.projeto.riea.model;
 
-import java.util.ArrayList;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,7 +22,6 @@ public class Professor{
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
-        
     }
 
     public Long getId() {

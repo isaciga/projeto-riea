@@ -1,24 +1,25 @@
-package edu.ifsp.ltp.exemplo_springsecurity.security.service;
+package com.projeto.riea.security.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import edu.ifsp.ltp.exemplo_springsecurity.model.Usuario;
-import edu.ifsp.ltp.exemplo_springsecurity.repository.UsuarioRepository;
+import com.projeto.riea.model.Aluno;
+import com.projeto.riea.repository.AlunoRepository;
+
 
 public class MyUserDetailService implements UserDetailsService {
     @Autowired
-    UsuarioRepository usuarioRepository;
+    AlunoRepository alunoRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuario usuarioCredenciais = usuarioRepository.findByUsername(username);
-        if(usuarioCredenciais == null)
+        Aluno alunoCredenciais = alunoRepository.findByUsername(username);
+        if(alunoCredenciais == null)
             throw new UsernameNotFoundException(username);
 
-        return new MyUserDetails(usuarioCredenciais);
+        return new MyUserDetails(alunoCredenciais);
     }
     
 }

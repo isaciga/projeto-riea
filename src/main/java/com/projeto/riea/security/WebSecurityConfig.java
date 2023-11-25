@@ -1,21 +1,17 @@
-package edu.ifsp.ltp.exemplo_springsecurity.security;
+package com.projeto.riea.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import edu.ifsp.ltp.exemplo_springsecurity.security.service.MyUserDetailService;
+import com.projeto.riea.security.service.MyUserDetailService;
 
 @Configuration
 @EnableWebSecurity
@@ -26,10 +22,20 @@ public class WebSecurityConfig{
                 channel -> channel.anyRequest().requiresSecure())
                 .authorizeHttpRequests(
                         authorize -> authorize
-                                .requestMatchers(HttpMethod.POST, "/criar").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/livre").permitAll())
+                                .requestMatchers(HttpMethod.POST, "/cadastro").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/info/listar").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/professor").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/conteudo/listar").permitAll())
                 .authorizeHttpRequests(
-                        authorize -> authorize.requestMatchers(HttpMethod.GET, "/conteudo").authenticated())
+                        authorize -> authorize
+                        .requestMatchers(HttpMethod.DELETE, "/cadastro/deletar/{id}").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/cadastro/listar").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/info/deletar/{id}").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/info").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/professor/deletar/{id}").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/professor/listar").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/conteudo/deletar/{id}").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/conteudo").authenticated())
                 .httpBasic(Customizer.withDefaults())
 ;
         return http.build();
